@@ -1,0 +1,31 @@
+.elements__cell {
+  width: 282px;
+  height: 361px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  position: relative;
+  margin-right: 17px;
+  margin-bottom: 20px;
+}
+
+.elements__cell:nth-child(3) {
+  margin-right: 0;
+}
+
+.elements__cell:nth-child(4) {
+  margin-bottom: 0;
+}
+
+.elements__cell:nth-child(5) {
+  margin-bottom: 0;
+}
+
+.elements__cell:nth-child(6) {
+  margin-right: 0;
+  margin-bottom: 0;
+}
