@@ -18,62 +18,51 @@
       <div class="profile__info">
         <div class="profile__edition">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <a href="#"><img src="./images/Edit Button.svg" alt="Кнопка редактирования" class="profile__button profile__button_edit"></a>
+          <img src="./images/Edit Button.svg" alt="Кнопка редактирования" class="profile__button profile__button_edit">
         </div>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <a href="#" class="profile__button-container">
+      <div class="profile__button-container">
         <img src="./images/Add Button.svg" alt="Кнопка добавления" class="profile__button profile__button_add">
-      </a>
-    </section>
-
-    <!-- <section class="popup">
-      <img src="./images/Close Icon.svg" alt="Закрывающий крестик" class="popup__close-icon">
-      <div class="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <p class="popup__text"></p>
-        <p class="popup__text"></p>
-        <button class="popup__button">Сохранить</button>
       </div>
-    </section> -->
+    </section>
 
     <section class="elements">
 
       <div class="elements__cell">
         <img src="./images/karachaevsk.png" alt="Карачаевск" class="elements__image">
         <p class="elements__name">Карачаевск</p>
-        <!-- <a href="#" class="elements__button"><img src="./images/Like.svg" alt="Like"></a> -->
         <img src="./images/Like.svg" alt="Like" class="elements__button">
       </div>
 
       <div class="elements__cell">
         <img src="./images/elbrus.png" alt="Гора Эльбрус" class="elements__image">
         <p class="elements__name">Гора Эльбрус</p>
-        <a href="#" class="elements__button"><img src="./images/Like.svg" alt="Like"></a>
+        <img src="./images/Like.svg" alt="Like" class="elements__button">
       </div>
 
       <div class="elements__cell">
         <img src="./images/dombai.png" alt="Домбай" class="elements__image">
         <p class="elements__name">Домбай</p>
-        <a href="#" class="elements__button"><img src="./images/Like.svg" alt="Like"></a>
+        <img src="./images/Like.svg" alt="Like" class="elements__button">
       </div>
 
       <div class="elements__cell">
         <img src="./images/grand_canyon.jpg" alt="Большой Каньон" class="elements__image">
         <p class="elements__name">Большой Каньон</p>
-        <a href="#" class="elements__button"><img src="./images/Like.svg" alt="Like"></a>
+        <img src="./images/Like.svg" alt="Like" class="elements__button">
       </div>
 
       <div class="elements__cell">
         <img src="./images/pamukkale.jpg" alt="Памуккале" class="elements__image">
         <p class="elements__name">Памуккале</p>
-        <a href="#" class="elements__button"><img src="./images/Like.svg" alt="Like"></a>
+        <img src="./images/Like.svg" alt="Like" class="elements__button">
       </div>
 
       <div class="elements__cell">
         <img src="./images/niagara.jpg" alt="Ниагарский водопад" class="elements__image">
         <p class="elements__name">Ниагарский водопад</p>
-        <a href="#" class="elements__button"><img src="./images/Like.svg" alt="Like"></a>
+        <img src="./images/Like.svg" alt="Like" class="elements__button">
       </div>
 
     </section>
@@ -81,6 +70,18 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+
+    <section class="popup">
+      <img src="./images/Close Icon.svg" alt="Закрывающий крестик" class="popup__close-icon">
+      <form class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" class="popup__text popup__text_name">
+        <input type="text" class="popup__text popup__text_job">
+        <input type="submit" value="Сохранить" class="popup__button">
+      </form>
+    </section>
+
   </div>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

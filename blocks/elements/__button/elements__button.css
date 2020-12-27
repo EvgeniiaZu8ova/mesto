@@ -4,15 +4,15 @@
   height: 18.13px;
   bottom: 29.87px;
   right: 22.24px;
+  cursor: pointer;
   opacity: 1;
   transition: opacity 0.2s ease-in-out 0.2s;
 }
 
 .elements__button:hover {
   opacity: 0.5;
-  cursor: pointer;
 }
 
 .elements__button:active {
-  background-image: #000000;
+  fill: #000000;
 }

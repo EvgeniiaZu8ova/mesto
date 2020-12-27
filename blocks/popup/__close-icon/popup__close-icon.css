@@ -1,6 +1,4 @@
 .popup__close-icon {
-  position: absolute;
-  z-index: 2;
   object-fit: contain;
   object-position: right;
   opacity: 1;
@@ -16,8 +14,6 @@
   .popup__close-icon {
     width: 282px;
     height: 37px;
-    top: calc(72.62px - 28px);
-    right: calc((100% - 282px) / 2);
   }
 }
 
@@ -25,7 +21,5 @@
   .popup__close-icon {
     width: calc(430px + 80px);
     height: 52px;
-    top: calc(146.72px - 45px);
-    right: calc((100% - 430px - 80px) / 2);
   }
 }
