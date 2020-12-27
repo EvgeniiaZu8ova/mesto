@@ -1,3 +1,13 @@
+.profile__button_edit {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out 0.2s;
+}
+
+.profile__button_edit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media all and (min-width: 320px) {
   .profile__button_edit {
     width: 18px;
