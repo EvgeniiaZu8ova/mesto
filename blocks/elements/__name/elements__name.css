@@ -3,11 +3,6 @@
   line-height: 29px;
   font-weight: 900;
   color: #000000;
-  width: 100%;
-  height: calc(100% - 282px);
-  background-color: #ffffff;
-  padding: 25px 65px 31px 21px;
-  box-sizing: border-box;
   margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
