@@ -1,5 +1,5 @@
 # Проект 4: Место
-[Ссылка на проект](https://www.yandex.ru)
+[Ссылка на проект](https://evgeniiazu8ova.github.io/mesto/)
 
 ### Описание проекта
 
