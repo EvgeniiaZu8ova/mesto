@@ -3,6 +3,10 @@
   height: 22px;
 }
 
+.profile__button_add:hover {
+  cursor: pointer;
+}
+
 @media all and (max-width: 320px) {
   .profile__button_add {
     width: 16px;
