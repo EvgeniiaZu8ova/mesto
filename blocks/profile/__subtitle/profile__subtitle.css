@@ -1,6 +1,9 @@
 .profile__subtitle {
   color: #FFFFFF;
   font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media all and (min-width: 320px) {
@@ -12,6 +15,7 @@
     text-align: center;
     padding-right: 28px;
     box-sizing: border-box;
+    max-width: 189px;
   }
 }
 
@@ -21,5 +25,6 @@
     line-height: 22px;
     margin: 16px 0 0;
     text-align: start;
+    max-width: 336px;
   }
 }

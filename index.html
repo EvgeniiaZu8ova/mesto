@@ -10,71 +10,69 @@
   <div class="page__container">
 
     <header class="header">
-      <img src="./images/Vector.svg" alt="Логотип" class="logo">
+      <img src="./images/vector.svg" alt="Логотип" class="logo">
     </header>
 
     <main class="content">
       <section class="profile">
-        <img src="./images/kusto.jpg" alt="Кусто" class="profile__photo">
+        <img src="./images/kusto.jpg" alt="Фотография профиля" class="profile__photo">
         <div class="profile__info">
           <div class="profile__edition">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <img src="./images/Edit Button.svg" alt="Кнопка редактирования" class="profile__button profile__button_edit">
+            <button type="button" name="editButton" class="profile__button profile__button_edit"></button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <div class="profile__button-container">
-          <img src="./images/Add Button.svg" alt="Кнопка добавления" class="profile__button profile__button_add">
-        </div>
+        <button type="button" name="addButton" class="profile__button profile__button_add"><img src="./images/add_button.svg" alt="Кнопка добавления" class="profile__icon"></button>
       </section>
 
       <section class="elements">
 
-        <div class="elements__cell">
-          <img src="./images/karachaevsk.png" alt="Карачаевск" class="elements__image">
-          <div class="elements__bottom-part">
-            <p class="elements__name">Карачаевск</p>
-            <img src="./images/Like.svg" alt="Like" class="elements__button">
+        <div class="article">
+          <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="article__image">
+          <div class="article__bottom-part">
+            <h2 class="article__name">Карачаевск</h2>
+            <button type="button" name="likeButton" class="article__button"></button>
           </div>
         </div>
 
-        <div class="elements__cell">
-          <img src="./images/elbrus.png" alt="Гора Эльбрус" class="elements__image">
-          <div class="elements__bottom-part">
-            <p class="elements__name">Гора Эльбрус</p>
-            <img src="./images/Like.svg" alt="Like" class="elements__button">
+        <div class="article">
+          <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="article__image">
+          <div class="article__bottom-part">
+            <h2 class="article__name">Гора Эльбрус</h2>
+            <button type="button" name="likeButton" class="article__button"></button>
           </div>
         </div>
 
-        <div class="elements__cell">
-          <img src="./images/dombai.png" alt="Домбай" class="elements__image">
-          <div class="elements__bottom-part">
-            <p class="elements__name">Домбай</p>
-            <img src="./images/Like.svg" alt="Like" class="elements__button">
+        <div class="article">
+          <img src="./images/dombai.jpg" alt="Домбай" class="article__image">
+          <div class="article__bottom-part">
+            <h2 class="article__name">Домбай</h2>
+            <button type="button" name="likeButton" class="article__button"></button>
           </div>
         </div>
 
-        <div class="elements__cell">
-          <img src="./images/grand_canyon.jpg" alt="Большой Каньон" class="elements__image">
-          <div class="elements__bottom-part">
-            <p class="elements__name">Большой Каньон</p>
-            <img src="./images/Like.svg" alt="Like" class="elements__button">
+        <div class="article">
+          <img src="./images/grand_canyon.jpg" alt="Большой Каньон" class="article__image">
+          <div class="article__bottom-part">
+            <h2 class="article__name">Большой Каньон</h2>
+            <button type="button" name="likeButton" class="article__button"></button>
           </div>
         </div>
 
-        <div class="elements__cell">
-          <img src="./images/pamukkale.jpg" alt="Памуккале" class="elements__image">
-          <div class="elements__bottom-part">
-            <p class="elements__name">Памуккале</p>
-            <img src="./images/Like.svg" alt="Like" class="elements__button">
+        <div class="article">
+          <img src="./images/pamukkale.jpg" alt="Памуккале" class="article__image">
+          <div class="article__bottom-part">
+            <h2 class="article__name">Памуккале</h2>
+            <button type="button" name="likeButton" class="article__button"></button>
           </div>
         </div>
 
-        <div class="elements__cell">
-          <img src="./images/niagara.jpg" alt="Ниагарский водопад" class="elements__image">
-          <div class="elements__bottom-part">
-            <p class="elements__name">Ниагарский водопад</p>
-            <img src="./images/Like.svg" alt="Like" class="elements__button">
+        <div class="article">
+          <img src="./images/niagara.jpg" alt="Ниагарский водопад" class="article__image">
+          <div class="article__bottom-part">
+            <h2 class="article__name">Ниагарский водопад</h2>
+            <button type="button" name="likeButton" class="article__button"></button>
           </div>
         </div>
 
@@ -86,12 +84,12 @@
     </footer>
 
     <section class="popup">
-      <img src="./images/Close Icon.svg" alt="Закрывающий крестик" class="popup__close-icon">
-      <form class="popup__container">
+      <button type="button" name="closeButton" class="popup__close-icon"><img src="./images/close_icon.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
+      <form name="edition-form" class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__text popup__text_name">
-        <input type="text" class="popup__text popup__text_job">
-        <input type="submit" value="Сохранить" class="popup__button">
+        <input type="text" name="userName" class="popup__text popup__text_input_name">
+        <input type="text" name="userJob" class="popup__text popup__text_input_job">
+        <button type="submit" name="submitButton" class="popup__button">Сохранить</button>
       </form>
     </section>
 

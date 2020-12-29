@@ -1,9 +1,8 @@
-.elements__bottom-part {
+.article__bottom-part {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: calc(100% - 282px);
   padding: 25px 17.24px 29.87px 21px;
   box-sizing: border-box;
   background-color: #ffffff;

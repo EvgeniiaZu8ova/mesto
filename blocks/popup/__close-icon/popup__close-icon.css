@@ -1,8 +1,12 @@
 .popup__close-icon {
-  object-fit: contain;
-  object-position: right;
   opacity: 1;
   transition: opacity 0.2s ease-in-out 0.2s;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: transparent;
+  border: none;
 }
 
 .popup__close-icon:hover {
