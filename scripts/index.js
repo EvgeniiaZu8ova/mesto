@@ -19,34 +19,21 @@ let jobInput = document.querySelector('.popup__text_input_job');
 let placeInput = document.querySelector('.popup__text_input_place');
 let linkInput = document.querySelector('.popup__text_input_link');
 
-// Функция открытия формы редактирования профиля
-function openPopupEdit() {
+// Функция открытия формы
+function openPopup(popup) {
   // добавляем элементу pop-up модификатор для вызова формы
-  popupEdit.classList.add('popup_opened');
+  popup.classList.add('popup_opened');
   // отображаем имеющиеся данные в полях ввода
   nameInput.value = nameElement.textContent;
   jobInput.value = jobElement.textContent;
-}
-
-// Функция открытия формы добавления карточек
-function openPopupAdd() {
-  // добавляем элементу pop-up модификатор для вызова формы
-  popupAdd.classList.add('popup_opened');
-  // отображаем имеющиеся данные в полях ввода
   placeInput.value = 'Название';
   linkInput.value = 'Ссылка на картинку';
 }
 
-// Функция закрытия формы редактирования профиля
-function closePopupEdit() {
+// Функция закрытия формы
+function closePopup(popup) {
   // удаляем модификатор отображения формы у элемента pop-up
-  popupEdit.classList.remove('popup_opened');
-}
-
-// Функция закрытия формы добавления карточек
-function closePopupAdd() {
-  // удаляем модификатор отображения формы у элемента pop-up
-  popupAdd.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
 }
 
 // Функция считывания введённых пользователем данных в форму
@@ -60,10 +47,18 @@ function handleFormSubmit (evt) {
 }
 
 // Добавляем слушатели
-openButtonEdit.addEventListener('click', openPopupEdit);
-openButtonAdd.addEventListener('click', openPopupAdd);
+openButtonEdit.addEventListener('click', function () {
+  openPopup(popupEdit);
+});
+openButtonAdd.addEventListener('click', function () {
+  openPopup(popupAdd);
+});
 
-closeButtonEdit.addEventListener('click', closePopupEdit);
-closeButtonAdd.addEventListener('click', closePopupAdd);
+closeButtonEdit.addEventListener('click', function () {
+  closePopup(popupEdit);
+});
+closeButtonAdd.addEventListener('click', function () {
+  closePopup(popupAdd);
+})
 
 formElement.addEventListener('submit', handleFormSubmit);

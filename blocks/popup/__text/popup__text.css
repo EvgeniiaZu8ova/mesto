@@ -1,5 +1,5 @@
 .popup__text {
-  color: #000000;
+  color: #c4c4c4;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
@@ -9,4 +9,8 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   border-left: none;
   margin: 0 0 30px;
+}
+
+.popup__text:focus {
+  color: #000000;
 }
