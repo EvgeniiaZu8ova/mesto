@@ -8,6 +8,8 @@ let openButtonAdd = document.querySelector('.profile__button_add');
 let closeButtonEdit = document.querySelector('.popup__close-icon_edit');
 let closeButtonAdd = document.querySelector('.popup__close-icon_add');
 
+let likeButtons = document.querySelectorAll('.article__button');
+
 let formElementEdit = document.querySelector('.popup__container_edition');
 let formElementAdd = document.querySelector('.popup__container_addition');
 
@@ -84,6 +86,17 @@ function handleEditFormSubmit (evt) {
   closePopup(popupEdit);
 }
 
+// Функция закрашивания кнопки лайка
+function likePicture (like) {
+  // Проверяем, содержит ли кнопка лайка модификатор активной кнопки
+  if (!(like.classList.contains('article__button_active'))) {
+    // Если не содержит, добавляем; в противном случае - убираем модификатор
+    like.classList.add('article__button_active');
+  } else {
+    like.classList.remove('article__button_active');
+  }
+}
+
 // Функция добавления новой карточки и обновления поля с карточками
 function handleAddFormSubmit (evt) {
   // Отменяем автоматическое обновление страницы при отправке формы
@@ -114,6 +127,13 @@ closeButtonEdit.addEventListener('click', function () {
 closeButtonAdd.addEventListener('click', function () {
   closePopup(popupAdd);
 })
+
+// Необходимо, чтобы можно было применить возможность поставить лайк ко всем элементам с картинками
+for (let i = 0; i < likeButtons.length; i++) {
+  likeButtons[i].addEventListener('click', function () {
+    likePicture(likeButtons[i]);
+  })
+}
 
 formElementEdit.addEventListener('submit', handleEditFormSubmit);
 formElementAdd.addEventListener('submit', handleAddFormSubmit);

@@ -34,6 +34,7 @@
 @import url(../blocks/article/__image/article__image.css);
 @import url(../blocks/article/__bottom-part/article__bottom-part.css);
 @import url(../blocks/article/__button/article__button.css);
+@import url(../blocks/article/__button/_active/article__button_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
