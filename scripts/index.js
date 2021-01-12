@@ -8,16 +8,54 @@ let openButtonAdd = document.querySelector('.profile__button_add');
 let closeButtonEdit = document.querySelector('.popup__close-icon_edit');
 let closeButtonAdd = document.querySelector('.popup__close-icon_add');
 
-let formElement = document.querySelector('.popup__container');
+let formElementEdit = document.querySelector('.popup__container_edition');
+let formElementAdd = document.querySelector('.popup__container_addition');
+
 let nameElement = document.querySelector('.profile__title');
 let jobElement = document.querySelector('.profile__subtitle');
 let placeElement = document.querySelector('.article__name');
 let linkElement = document.querySelector('.article__image');
 
+let placeElements = document.querySelectorAll('.article__name');
+let linkElements = document.querySelectorAll('.article__image');
+
 let nameInput = document.querySelector('.popup__text_input_name');
 let jobInput = document.querySelector('.popup__text_input_job');
 let placeInput = document.querySelector('.popup__text_input_place');
 let linkInput = document.querySelector('.popup__text_input_link');
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+// Передаём в форму с карточками названия и изображения из массива initialCards
+for (let i = 0; i < placeElements.length; i++) {
+  placeElements[i].textContent = initialCards[i].name;
+  linkElements[i].src = initialCards[i].link;
+}
 
 // Функция открытия формы
 function openPopup(popup) {
@@ -37,13 +75,29 @@ function closePopup(popup) {
 }
 
 // Функция считывания введённых пользователем данных в форму
-function handleFormSubmit (evt) {
+function handleEditFormSubmit (evt) {
   // Отменяем автоматическое обновление страницы при отправке формы
   evt.preventDefault();
   // Заменяем данные на странице на информацию из формы ввода
   nameElement.textContent = nameInput.value;
   jobElement.textContent = jobInput.value;
-  closePopup();
+  closePopup(popupEdit);
+}
+
+// Функция добавления новой карточки и обновления поля с карточками
+function handleAddFormSubmit (evt) {
+  // Отменяем автоматическое обновление страницы при отправке формы
+  evt.preventDefault();
+  // Сдвигаем все карточки на одну вправо, освобождая место для новой карточки
+  const a = placeElements.length;
+  for (let i = 1; i < a; i++) {
+    placeElements[a - i].textContent = placeElements[a - i - 1].textContent;
+    linkElements[a - i].src = linkElements[a - i - 1].src;
+  }
+  // Добавляем в первое поле для карточек свою, новую карточку
+  placeElement.textContent = placeInput.value;
+  linkElement.src = linkInput.value;
+  closePopup(popupAdd);
 }
 
 // Добавляем слушатели
@@ -61,4 +115,5 @@ closeButtonAdd.addEventListener('click', function () {
   closePopup(popupAdd);
 })
 
-formElement.addEventListener('submit', handleFormSubmit);
+formElementEdit.addEventListener('submit', handleEditFormSubmit);
+formElementAdd.addEventListener('submit', handleAddFormSubmit);
