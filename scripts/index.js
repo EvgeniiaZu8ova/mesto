@@ -1,20 +1,26 @@
 // Задаём переменные
+// Все pop-up
 let popupEdit = document.querySelector('.popup_edition');
 let popupAdd = document.querySelector('.popup_addition');
+let popupPict = document.querySelector('.popup_picture');
 
+// Кнопки открытия и закрытия pop-up
 let openButtonEdit = document.querySelector('.profile__button_edit');
 let openButtonAdd = document.querySelector('.profile__button_add');
-
 let closeButtonEdit = document.querySelector('.popup__close-icon_edit');
 let closeButtonAdd = document.querySelector('.popup__close-icon_add');
 
+// Прочие кнопки
 let likeButtons = document.querySelectorAll('.article__button');
 let deleteButtons = document.querySelectorAll('.article__delete');
 
+// Элементы форм отправки
 let formElementEdit = document.querySelector('.popup__container_edition');
 let formElementAdd = document.querySelector('.popup__container_addition');
 
 let cards = document.querySelectorAll('.article');
+let popupImage = document.querySelector('.popup__image');
+let popupParagraph = document.querySelector('.popup__paragraph');
 
 let nameElement = document.querySelector('.profile__title');
 let jobElement = document.querySelector('.profile__subtitle');
@@ -24,11 +30,13 @@ let linkElement = document.querySelector('.article__image');
 let placeElements = document.querySelectorAll('.article__name');
 let linkElements = document.querySelectorAll('.article__image');
 
+// Заполняемые пользователем поля
 let nameInput = document.querySelector('.popup__text_input_name');
 let jobInput = document.querySelector('.popup__text_input_job');
 let placeInput = document.querySelector('.popup__text_input_place');
 let linkInput = document.querySelector('.popup__text_input_link');
 
+// Массив с исходными карточками
 const initialCards = [
   {
     name: 'Архыз',
@@ -147,6 +155,15 @@ for (let i = 0; i < likeButtons.length; i++) {
 for (let i = 0; i < deleteButtons.length; i++) {
   deleteButtons[i].addEventListener('click', function () {
     deleteCard(cards[i]);
+  })
+}
+
+// Необходимо, чтобы можно было вызвать поп-ап с картинкой при нажатии на любую карточку
+for (let i = 0; i < linkElements.length; i++) {
+  popupImage.src = linkElements[i].src;
+  popupParagraph.textContent = placeElements[i].textContent;
+  linkElements[i].addEventListener('click', function () {
+    openPopup(popupPict);
   })
 }
 
