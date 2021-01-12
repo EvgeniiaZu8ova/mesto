@@ -9,9 +9,12 @@ let closeButtonEdit = document.querySelector('.popup__close-icon_edit');
 let closeButtonAdd = document.querySelector('.popup__close-icon_add');
 
 let likeButtons = document.querySelectorAll('.article__button');
+let deleteButtons = document.querySelectorAll('.article__delete');
 
 let formElementEdit = document.querySelector('.popup__container_edition');
 let formElementAdd = document.querySelector('.popup__container_addition');
+
+let cards = document.querySelectorAll('.article');
 
 let nameElement = document.querySelector('.profile__title');
 let jobElement = document.querySelector('.profile__subtitle');
@@ -76,17 +79,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-// Функция считывания введённых пользователем данных в форму
-function handleEditFormSubmit (evt) {
-  // Отменяем автоматическое обновление страницы при отправке формы
-  evt.preventDefault();
-  // Заменяем данные на странице на информацию из формы ввода
-  nameElement.textContent = nameInput.value;
-  jobElement.textContent = jobInput.value;
-  closePopup(popupEdit);
-}
-
-// Функция закрашивания кнопки лайка
+// Функция активации кнопки лайка
 function likePicture (like) {
   // Проверяем, содержит ли кнопка лайка модификатор активной кнопки
   if (!(like.classList.contains('article__button_active'))) {
@@ -95,6 +88,21 @@ function likePicture (like) {
   } else {
     like.classList.remove('article__button_active');
   }
+}
+
+// Функция удаления карточки
+function deleteCard (card) {
+  card.remove();
+}
+
+// Функция считывания введённых пользователем данных в форму
+function handleEditFormSubmit (evt) {
+  // Отменяем автоматическое обновление страницы при отправке формы
+  evt.preventDefault();
+  // Заменяем данные на странице на информацию из формы ввода
+  nameElement.textContent = nameInput.value;
+  jobElement.textContent = jobInput.value;
+  closePopup(popupEdit);
 }
 
 // Функция добавления новой карточки и обновления поля с карточками
@@ -132,6 +140,13 @@ closeButtonAdd.addEventListener('click', function () {
 for (let i = 0; i < likeButtons.length; i++) {
   likeButtons[i].addEventListener('click', function () {
     likePicture(likeButtons[i]);
+  })
+}
+
+// Необходимо, чтобы можно было удалять карточки с использованием всех иконок удаления
+for (let i = 0; i < deleteButtons.length; i++) {
+  deleteButtons[i].addEventListener('click', function () {
+    deleteCard(cards[i]);
   })
 }
 
