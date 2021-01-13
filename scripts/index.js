@@ -9,8 +9,9 @@ let openButtonEdit = document.querySelector('.profile__button_edit');
 let openButtonAdd = document.querySelector('.profile__button_add');
 let closeButtonEdit = document.querySelector('.popup__close-icon_edit');
 let closeButtonAdd = document.querySelector('.popup__close-icon_add');
+let closeButtonPict = document.querySelector('.popup__close-icon_pic');
 
-// Прочие кнопки
+// Кнопки "Нравится" и "Удалить"
 let likeButtons = document.querySelectorAll('.article__button');
 let deleteButtons = document.querySelectorAll('.article__delete');
 
@@ -18,15 +19,18 @@ let deleteButtons = document.querySelectorAll('.article__delete');
 let formElementEdit = document.querySelector('.popup__container_edition');
 let formElementAdd = document.querySelector('.popup__container_addition');
 
+// Переменные для работы с карточками
 let cards = document.querySelectorAll('.article');
 let popupImage = document.querySelector('.popup__image');
 let popupParagraph = document.querySelector('.popup__paragraph');
 
+// Переменные для работы с данными, введенными пользователем
 let nameElement = document.querySelector('.profile__title');
 let jobElement = document.querySelector('.profile__subtitle');
 let placeElement = document.querySelector('.article__name');
 let linkElement = document.querySelector('.article__image');
 
+// Массивы со всеми изображениями и их подписями, имеющимися на странице
 let placeElements = document.querySelectorAll('.article__name');
 let linkElements = document.querySelectorAll('.article__image');
 
@@ -143,6 +147,9 @@ closeButtonEdit.addEventListener('click', function () {
 closeButtonAdd.addEventListener('click', function () {
   closePopup(popupAdd);
 })
+closeButtonPict.addEventListener('click', function () {
+  closePopup(popupPict);
+})
 
 // Необходимо, чтобы можно было применить возможность поставить лайк ко всем элементам с картинками
 for (let i = 0; i < likeButtons.length; i++) {
@@ -160,9 +167,9 @@ for (let i = 0; i < deleteButtons.length; i++) {
 
 // Необходимо, чтобы можно было вызвать поп-ап с картинкой при нажатии на любую карточку
 for (let i = 0; i < linkElements.length; i++) {
-  popupImage.src = linkElements[i].src;
-  popupParagraph.textContent = placeElements[i].textContent;
   linkElements[i].addEventListener('click', function () {
+    popupImage.src = linkElements[i].src;
+    popupParagraph.textContent = placeElements[i].textContent;
     openPopup(popupPict);
   })
 }
