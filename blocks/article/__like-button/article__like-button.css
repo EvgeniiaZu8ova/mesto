@@ -1,4 +1,4 @@
-.article__button {
+.article__like-button {
   width: 20.76px;
   height: 18.13px;
   opacity: 1;
@@ -11,7 +11,11 @@
   background-position: center;
 }
 
-.article__button:hover {
+.article__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+.article__like-button:focus {
+  outline: none;
 }

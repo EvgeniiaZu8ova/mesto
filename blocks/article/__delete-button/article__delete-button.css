@@ -1,4 +1,4 @@
-.article__delete {
+.article__delete-button {
   position: absolute;
   top: 18px;
   right: 15px;
@@ -11,7 +11,11 @@
   transition: opacity 0.2s ease-in-out 0.2s;
 }
 
-.article__delete:hover {
+.article__delete-button:hover {
   opacity: 0.6;
   cursor: pointer;
+}
+
+.article__delete-button:focus {
+  outline: none;
 }
