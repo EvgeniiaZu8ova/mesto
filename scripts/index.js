@@ -106,6 +106,7 @@ closeButtonEdit.addEventListener('click', function () {
 
 openButtonAdd.addEventListener('click', function () {
   openPopup(popupAdd);
+  formElementAdd.reset();
 });
 
 closeButtonAdd.addEventListener('click', function () {
