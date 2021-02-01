@@ -47,20 +47,24 @@
 
     <section class="popup popup_edition">
       <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_edit"><img src="./images/close_icon.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
-      <form name="edition-form" class="popup__container popup__container_edition">
+      <form novalidate name="edition-form" class="popup__container popup__container_edition">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input required type="text" name="userName" placeholder="Имя пользователя" class="popup__text popup__text_input_name">
-        <input required type="text" name="userJob" placeholder="Профессия пользователя" class="popup__text popup__text_input_job">
+        <input id="name-input" required type="text" name="userName" placeholder="Имя пользователя" minlength="2" maxlength="40" class="popup__text popup__text_input_name">
+        <span class="name-input-error popup__text-error"></span>
+        <input id="job-input" required type="text" name="userJob" placeholder="Профессия пользователя" minlength="2" maxlength="200" class="popup__text popup__text_input_job">
+        <span class="job-input-error popup__text-error"></span>
         <button type="submit" name="submitButton" class="popup__button">Сохранить</button>
       </form>
     </section>
 
     <section class="popup popup_addition">
       <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_add"><img src="./images/close_icon.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
-      <form name="addition-form" class="popup__container popup__container_addition">
+      <form novalidate name="addition-form" class="popup__container popup__container_addition">
         <h2 class="popup__title">Новое место</h2>
-        <input required type="text" name="placeName" placeholder="Название места" class="popup__text popup__text_disabled popup__text_input_place">
-        <input required type="text" name="placeLink" placeholder="Ссылка на изображение" class="popup__text popup__text_disabled popup__text_input_link">
+        <input id="place-input" required type="text" name="placeName" placeholder="Название места" minlength="2" maxlength="30" class="popup__text popup__text_disabled popup__text_input_place">
+        <span class="place-input-error popup__text-error"></span>
+        <input id="link-input" required type="url" name="placeLink" placeholder="Ссылка на изображение" class="popup__text popup__text_disabled popup__text_input_link">
+        <span class="link-input-error popup__text-error"></span>
         <button type="submit" name="submitButton" class="popup__button">Создать</button>
       </form>
     </section>
@@ -76,5 +80,6 @@
   </div>
   <script src="./scripts/constants.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 </html>
