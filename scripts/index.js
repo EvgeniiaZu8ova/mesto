@@ -1,5 +1,6 @@
 // Задаём переменные
 // Окна pop-up
+const popupOverlays = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_edition');
 const popupAdd = document.querySelector('.popup_addition');
 const popupPict = document.querySelector('.popup_picture');
@@ -35,13 +36,22 @@ const cardsContainer = document.querySelector('.elements');
 const openPopup = (popup) => {
   // добавляем элементу pop-up модификатор для вызова формы
   popup.classList.add('popup_opened');
-}
+  popup.addEventListener('keydown', keyHandler);
+};
 
 // Функция закрытия формы
 const closePopup = (popup) => {
   // удаляем модификатор отображения формы у элемента pop-up
   popup.classList.remove('popup_opened');
-}
+  popup.removeEventListener('keydown', keyHandler);
+};
+
+// Возможность закрыть модальное окно нажатием на Esc
+const keyHandler = (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup(evt.target);
+  }
+};
 
 // Функция считывания введённых пользователем данных в форму
 const handleEditFormSubmit = (evt) => {
@@ -51,7 +61,7 @@ const handleEditFormSubmit = (evt) => {
   nameElement.textContent = nameInput.value;
   jobElement.textContent = jobInput.value;
   closePopup(popupEdit);
-}
+};
 
 // Функция удаления карточки
 const handleDeleteCard = (evt) => {
@@ -94,6 +104,14 @@ const renderCards = (data) => {
 };
 
 // Добавляем слушатели
+popupOverlays.forEach((el) => { 
+  el.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup')) {
+      closePopup(evt.target);
+    }
+  });
+});
+
 openButtonEdit.addEventListener('click', () => {
   openPopup(popupEdit);
   nameInput.value = nameElement.textContent;
