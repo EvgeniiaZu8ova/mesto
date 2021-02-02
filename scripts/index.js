@@ -36,20 +36,21 @@ const cardsContainer = document.querySelector('.elements');
 const openPopup = (popup) => {
   // добавляем элементу pop-up модификатор для вызова формы
   popup.classList.add('popup_opened');
-  popup.addEventListener('keydown', keyHandler);
+  document.addEventListener('keydown', closePopupEsc);
 };
 
 // Функция закрытия формы
 const closePopup = (popup) => {
   // удаляем модификатор отображения формы у элемента pop-up
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', keyHandler);
+  document.removeEventListener('keydown', closePopupEsc);
 };
 
 // Возможность закрыть модальное окно нажатием на Esc
-const keyHandler = (evt) => {
+const closePopupEsc = (evt) => {
+  const openedPopup = document.querySelector('.popup_opened') ; 
   if (evt.key === 'Escape') {
-    closePopup(evt.target);
+    closePopup(openedPopup);
   }
 };
 

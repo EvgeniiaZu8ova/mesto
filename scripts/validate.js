@@ -33,8 +33,11 @@ const hasInvalidInput = (inputList) => {
 // Функция активации/дезактивации кнопки отправки данных в зависимости от валидности полей ввода
 const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
   if (hasInvalidInput(inputList)) {
+    buttonElement.disabled = true;
     buttonElement.classList.add(inactiveButtonClass);
+    
   } else {
+    buttonElement.disabled = false;
     buttonElement.classList.remove(inactiveButtonClass);
   }
 };
