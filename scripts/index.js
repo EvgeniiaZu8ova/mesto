@@ -1,20 +1,17 @@
+import { Card } from './Card.js';
+import { initialCards } from './constants.js';
+
 // Задаём переменные
 // Окна pop-up
 const popupOverlays = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_edition');
 const popupAdd = document.querySelector('.popup_addition');
-const popupPict = document.querySelector('.popup_picture');
 
 // Кнопки открытия и закрытия pop-up
 const openButtonEdit = document.querySelector('.profile__button_edit');
 const openButtonAdd = document.querySelector('.profile__button_add');
 const closeButtonEdit = document.querySelector('.popup__close-icon_edit');
 const closeButtonAdd = document.querySelector('.popup__close-icon_add');
-const closeButtonPict = document.querySelector('.popup__close-icon_pic');
-
-// Элементы pop-up окна для просмотра карточек
-const popupImage = document.querySelector('.popup__image');
-const popupParagraph = document.querySelector('.popup__paragraph');
 
 // Элементы форм отправки
 const formElementEdit = document.querySelector('.popup__container_edition');
@@ -28,8 +25,7 @@ const jobInput = document.querySelector('.popup__text_input_job');
 const nameElement = document.querySelector('.profile__title');
 const jobElement = document.querySelector('.profile__subtitle');
 
-// Работа с темплейтом
-const template = document.querySelector('template').content;
+// Контейнер для карточек
 const cardsContainer = document.querySelector('.elements');
 
 // Функция открытия формы
@@ -48,7 +44,7 @@ const closePopup = (popup) => {
 
 // Возможность закрыть модальное окно нажатием на Esc
 const closePopupEsc = (evt) => {
-  const openedPopup = document.querySelector('.popup_opened') ; 
+  const openedPopup = document.querySelector('.popup_opened'); 
   if (evt.key === 'Escape') {
     closePopup(openedPopup);
   }
@@ -64,43 +60,13 @@ const handleEditFormSubmit = (evt) => {
   closePopup(popupEdit);
 };
 
-// Функция удаления карточки
-const handleDeleteCard = (evt) => {
-  evt.target.closest('.article').remove();
-};
-
-// Функция лайка карточки
-const handleLikeIcon = (evt) => {
-  evt.target.classList.toggle('article__like-button_active');
-};
-
-// Функция открытия pop-up с карточкой
-const handlePreviewPicture = (image, paragraph) => {
-  popupImage.src = image.src;
-  popupParagraph.textContent = paragraph.textContent;
-  openPopup(popupPict);
-};
-
-// Функция возврата элемента карточки (клонирует темплейт, заполняет его поля, добавляет обработчики)
-const getCardElement = (data) => {
-  const cardElement = template.cloneNode(true);
-  const cardImage = cardElement.querySelector('.article__image');
-  const cardName = cardElement.querySelector('.article__name');
-  const deleteButton = cardElement.querySelector('.article__delete-button');
-  const likeButton = cardElement.querySelector('.article__like-button');
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardName.textContent = data.name;
-  deleteButton.addEventListener('click', handleDeleteCard);
-  likeButton.addEventListener('click', handleLikeIcon);
-  cardImage.addEventListener('click', () => handlePreviewPicture (cardImage, cardName));
-  return cardElement;
-};
-
 // Функция перебора массива
 const renderCards = (data) => {
   data.forEach((item) => {
-    cardsContainer.prepend(getCardElement(item));
+    const card = new Card(item, '.article');
+    const cardElement = card.generateCard();
+
+    cardsContainer.prepend(cardElement);
   });
 };
 
@@ -132,10 +98,6 @@ closeButtonAdd.addEventListener('click', function () {
   closePopup(popupAdd);
 });
 
-closeButtonPict.addEventListener('click', function () {
-  closePopup(popupPict);
-});
-
 formElementEdit.addEventListener('submit', handleEditFormSubmit);
 
 formElementAdd.addEventListener('submit', function (evt) {
@@ -149,5 +111,7 @@ formElementAdd.addEventListener('submit', function (evt) {
     renderCards(cardInput);
     closePopup(popupAdd);
 });
+
+export { openPopup, closePopup };
 
 renderCards(initialCards.reverse());
