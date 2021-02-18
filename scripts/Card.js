@@ -13,11 +13,13 @@ class Card {
     this._cardSelector = cardSelector;
   }
 
+  // Получить темплейт карточки
   _getTemplate() {
     const cardElement = template.cloneNode(true);
     return cardElement;
   }
 
+  // Вернуть элемент заполненной карточки
   generateCard() {
     this._element = this._getTemplate();
     const cardImage = this._element.querySelector('.article__image');
@@ -32,20 +34,24 @@ class Card {
     return this._element;
   }
 
+  // Удалить карточку
   _handleDeleteCard(evt) {
     evt.target.closest('.article').remove();
   }
 
+  // Поставить лайк карточке
   _handleLikeIcon(evt) {
     evt.target.classList.toggle('article__like-button_active');
   }
 
+  // Настроить предпросмотр карточки в модальном окне
   _handlePreviewPicture() {
     popupImage.src = this._link;
     popupParagraph.textContent = this._name;
     openPopup(popupPict);
   }
 
+  // Добавить обработчики событий
   _setEventListeners() {
     const deleteButton = this._element.querySelector('.article__delete-button');
     const likeButton = this._element.querySelector('.article__like-button');

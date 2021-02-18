@@ -1,4 +1,5 @@
 import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 import { initialCards } from './constants.js';
 
 // Задаём переменные
@@ -27,6 +28,9 @@ const jobElement = document.querySelector('.profile__subtitle');
 
 // Контейнер для карточек
 const cardsContainer = document.querySelector('.elements');
+
+// Массив с формами
+const forms = document.querySelectorAll('.popup__container');
 
 // Функция открытия формы
 const openPopup = (popup) => {
@@ -60,7 +64,7 @@ const handleEditFormSubmit = (evt) => {
   closePopup(popupEdit);
 };
 
-// Функция перебора массива
+// Функция перебора массива с карточками
 const renderCards = (data) => {
   data.forEach((item) => {
     const card = new Card(item, '.article');
@@ -68,6 +72,23 @@ const renderCards = (data) => {
 
     cardsContainer.prepend(cardElement);
   });
+};
+
+// Функция для валидации всех форм на странице
+const validateForms = (forms) => {
+  const formSettingsObject = {
+    inputSelector: '.popup__text',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__text_type_error',
+    errorClass: 'popup__text-error_visible'
+  };
+
+  forms.forEach((el) => {
+    const form = new FormValidator(formSettingsObject, el);
+    form.enableValidation();
+    return form;
+  })
 };
 
 // Добавляем слушатели
@@ -114,4 +135,5 @@ formElementAdd.addEventListener('submit', function (evt) {
 
 export { openPopup, closePopup };
 
+validateForms(forms);
 renderCards(initialCards.reverse());
