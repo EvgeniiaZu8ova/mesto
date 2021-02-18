@@ -8,11 +8,17 @@ const popupOverlays = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_edition');
 const popupAdd = document.querySelector('.popup_addition');
 
+// Модальное окно для предпросмотра карточек, его текст и картинка
+const popupPict = document.querySelector('.popup_picture');
+const popupImage = document.querySelector('.popup__image');
+const popupParagraph = document.querySelector('.popup__paragraph');
+
 // Кнопки открытия и закрытия pop-up
 const openButtonEdit = document.querySelector('.profile__button_edit');
 const openButtonAdd = document.querySelector('.profile__button_add');
 const closeButtonEdit = document.querySelector('.popup__close-icon_edit');
 const closeButtonAdd = document.querySelector('.popup__close-icon_add');
+const closeButtonPict = document.querySelector('.popup__close-icon_pic');
 
 // Элементы форм отправки
 const formElementEdit = document.querySelector('.popup__container_edition');
@@ -25,6 +31,8 @@ const jobInput = document.querySelector('.popup__text_input_job');
 // Переменные для работы с данными, введенными пользователем
 const nameElement = document.querySelector('.profile__title');
 const jobElement = document.querySelector('.profile__subtitle');
+const placeElement = document.querySelector('.popup__text_input_place');
+const linkElement = document.querySelector('.popup__text_input_link');
 
 // Контейнер для карточек
 const cardsContainer = document.querySelector('.elements');
@@ -54,6 +62,13 @@ const closePopupEsc = (evt) => {
   }
 };
 
+// Обработчик для модального окна с предпросмотром карточек
+const handleCardClick = (name, link) => {
+  popupImage.src = link;
+  popupParagraph.textContent = name;
+  openPopup(popupPict);
+};
+
 // Функция считывания введённых пользователем данных в форму
 const handleEditFormSubmit = (evt) => {
   // Отменяем автоматическое обновление страницы при отправке формы
@@ -67,7 +82,7 @@ const handleEditFormSubmit = (evt) => {
 // Функция перебора массива с карточками
 const renderCards = (data) => {
   data.forEach((item) => {
-    const card = new Card(item, '.article');
+    const card = new Card(item, '.article', handleCardClick);
     const cardElement = card.generateCard();
 
     cardsContainer.prepend(cardElement);
@@ -92,11 +107,11 @@ const validateForms = (forms) => {
 };
 
 // Добавляем слушатели
-popupOverlays.forEach((el) => { 
+popupOverlays.forEach((el) => {
   el.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('popup')) {
       closePopup(evt.target);
-    }
+    };
   });
 });
 
@@ -119,14 +134,18 @@ closeButtonAdd.addEventListener('click', function () {
   closePopup(popupAdd);
 });
 
+closeButtonPict.addEventListener('click', function() {
+  closePopup(popupPict);
+})
+
 formElementEdit.addEventListener('submit', handleEditFormSubmit);
 
 formElementAdd.addEventListener('submit', function (evt) {
   evt.preventDefault();
   const cardInput = [
     {
-      name: document.querySelector('.popup__text_input_place').value,
-      link: document.querySelector('.popup__text_input_link').value
+      name: placeElement.value,
+      link: linkElement.value
     }
   ];
     renderCards(cardInput);
