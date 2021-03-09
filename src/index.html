@@ -4,18 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
   <div class="page__container">
 
     <header class="header">
-      <img src="./images/vector.svg" alt="Логотип" class="logo">
+      <img src="<%=require('./images/vector.svg')%>" alt="Логотип" class="logo">
     </header>
 
     <main class="content">
       <section class="profile">
-        <img src="./images/kusto.jpg" alt="Фотография профиля" class="profile__photo">
+        <img src="<%=require('./images/kusto.jpg')%>" alt="Фотография профиля" class="profile__photo">
         <div class="profile__info">
           <div class="profile__edition">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -23,7 +22,7 @@
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button type="button" name="addButton" class="profile__button profile__button_add"><img src="./images/add_button.svg" alt="Кнопка добавления" class="profile__icon"></button>
+        <button type="button" name="addButton" class="profile__button profile__button_add"><img src="<%=require('./images/add_button.svg')%>" alt="Кнопка добавления" class="profile__icon"></button>
       </section>
 
       <section class="elements">
@@ -46,7 +45,7 @@
     </template>
 
     <section class="popup popup_edition">
-      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_edit"><img src="./images/close_icon.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
+      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_edit"><img src="<%=require('./images/close_icon.svg')%>" alt="Закрывающий крестик" class="popup__close-image"></button>
       <form novalidate name="edition-form" class="popup__container popup__container_edition">
         <h2 class="popup__title">Редактировать профиль</h2>
         <input id="name-input" required type="text" name="userName" placeholder="Имя пользователя" minlength="2" maxlength="40" class="popup__text popup__text_input_name">
@@ -58,7 +57,7 @@
     </section>
 
     <section class="popup popup_addition">
-      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_add"><img src="./images/close_icon.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
+      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_add"><img src="<%=require('./images/close_icon.svg')%>" alt="Закрывающий крестик" class="popup__close-image"></button>
       <form novalidate name="addition-form" class="popup__container popup__container_addition">
         <h2 class="popup__title">Новое место</h2>
         <input id="place-input" required type="text" name="name" placeholder="Название места" minlength="2" maxlength="30" class="popup__text popup__text_disabled popup__text_input_place">
@@ -71,13 +70,12 @@
 
     <section class="popup popup_picture">
       <div class="popup__card-container">
-        <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_pic"><img src="./images/close_icon.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
+        <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_pic"><img src="<%=require('./images/close_icon.svg')%>" alt="Закрывающий крестик" class="popup__close-image"></button>
         <img src="#" alt="Изображение места" class="popup__image">
         <p class="popup__paragraph"></p>
       </div>
     </section>
 
   </div>
-  <script type="module" src="./scripts/pages/index.js"></script>
 </body>
 </html>
