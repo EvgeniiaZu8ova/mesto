@@ -10,37 +10,36 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
 import { initialCards, openButtonEdit, openButtonAdd, nameInput, 
-        jobInput, cardsContainer, forms } from '../utils/constants.js';
+        jobInput, cardsContainer, forms, submitButtonAdd } from '../utils/constants.js';
+
+// Создание экземпляра модального окна с картинкой
+const popupWithImage = new PopupWithImage('.popup_picture');
+popupWithImage.setEventListeners();
+
+// Функция создания карточки
+function createCard(item) {
+  const card = new Card(item, '.article', () => {
+    popupWithImage.open(item.link, item.name);
+  });
+
+  return card.generateCard();
+};
 
 // Создание секции с карточками
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '.article', () => {
-      const popupImage = new PopupWithImage('.popup_picture', item.name, item.link);
-      popupImage.open();
-      popupImage.setEventListeners();
-    });
-    const cardElement = card.generateCard();
-    
+    const cardElement = createCard(item);    
     cardList.addItem(cardElement);
-    }
-  }, cardsContainer
+  }
+}, cardsContainer
 );
-
 
 // Создание модального окна с формой для добавления новых карточек
 const popupWithAdd = new PopupWithForm(
   '.popup_addition',
   (item) => {
-    const card = new Card(item, '.article', () => {
-      const popupImage = new PopupWithImage('.popup_picture', item.name, item.link);
-      popupImage.open();
-      popupImage.setEventListeners();
-    });
-
-    const cardElement = card.generateCard();
-    
+    const cardElement = createCard(item);    
     cardList.addItem(cardElement);
   }
 );
@@ -69,9 +68,11 @@ popupWithEdit.setEventListeners();
 // Отрисовка карточек
 cardList.renderItems();
 
-
 // Добавление обработчиков кнопкам открытия модальных окон
 openButtonAdd.addEventListener('click', () => {
+  submitButtonAdd.disabled = true;
+  submitButtonAdd.classList.add('popup__button_disabled');
+
   popupWithAdd.open();
 });
 

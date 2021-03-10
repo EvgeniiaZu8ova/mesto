@@ -39,3 +39,6 @@ export const cardsContainer = '.elements';
 
 // Массив с формами
 export const forms = document.querySelectorAll('.popup__container');
+
+// Кнопка отправки в форме добавления карточки
+export const submitButtonAdd = document.querySelector('.popup_addition').querySelector('.popup__button');
