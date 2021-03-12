@@ -56,7 +56,7 @@ export default class FormValidator {
   }
 
   // Сделать кнопку отправки доступной или недоступной в зависимости от результатов валидации
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._submitButton.disabled = true;
       this._submitButton.classList.add(this._inactiveButtonClass);
@@ -69,11 +69,11 @@ export default class FormValidator {
 
   // Функция добавления обработчиков полям формы
   _setEventListeners() {
-    this._toggleButtonState();
+    this.toggleButtonState();
     this._inputList.forEach((el) => {
       el.addEventListener('input', () => {
         this._isValid();
-        this._toggleButtonState();
+        this.toggleButtonState();
       })
     })
   }

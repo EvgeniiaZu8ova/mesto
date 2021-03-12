@@ -26,6 +26,15 @@ export const initialCards = [
   }
 ];
 
+// Настройки для класса валидации
+export const formSettingsObject = {
+  inputSelector: '.popup__text',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__text_type_error',
+  errorClass: 'popup__text-error_visible'
+};
+
 // Кнопки открытия pop-up
 export const openButtonEdit = document.querySelector('.profile__button_edit');
 export const openButtonAdd = document.querySelector('.profile__button_add');
@@ -37,8 +46,6 @@ export const jobInput = document.querySelector('.popup__text_input_job');
 // Контейнер для карточек
 export const cardsContainer = '.elements';
 
-// Массив с формами
-export const forms = document.querySelectorAll('.popup__container');
-
-// Кнопка отправки в форме добавления карточки
-export const submitButtonAdd = document.querySelector('.popup_addition').querySelector('.popup__button');
+// Формы с валидацией
+export const addFormElement = document.querySelector('.popup__container_addition');
+export const editFormElement = document.querySelector('.popup__container_edition');

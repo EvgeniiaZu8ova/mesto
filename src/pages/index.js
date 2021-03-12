@@ -9,8 +9,8 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
-import { initialCards, openButtonEdit, openButtonAdd, nameInput, 
-        jobInput, cardsContainer, forms, submitButtonAdd } from '../utils/constants.js';
+import { initialCards, formSettingsObject, openButtonEdit, openButtonAdd, nameInput, 
+        jobInput, cardsContainer, addFormElement, editFormElement } from '../utils/constants.js';
 
 // Создание экземпляра модального окна с картинкой
 const popupWithImage = new PopupWithImage('.popup_picture');
@@ -68,11 +68,16 @@ popupWithEdit.setEventListeners();
 // Отрисовка карточек
 cardList.renderItems();
 
+// Создание экземпляров класса валидации
+const addCardValidator = new FormValidator(formSettingsObject, addFormElement); 
+addCardValidator.enableValidation();
+
+const editInfoValidator = new FormValidator(formSettingsObject, editFormElement);
+editInfoValidator.enableValidation();
+
 // Добавление обработчиков кнопкам открытия модальных окон
 openButtonAdd.addEventListener('click', () => {
-  submitButtonAdd.disabled = true;
-  submitButtonAdd.classList.add('popup__button_disabled');
-
+  addCardValidator.toggleButtonState();
   popupWithAdd.open();
 });
 
@@ -81,23 +86,3 @@ openButtonEdit.addEventListener('click', () => {
   nameInput.value = userInfo.getUserInfo().userName;
   jobInput.value = userInfo.getUserInfo().userJob;
 });
-
-
-// Валидация всех форм на странице
-const validateForms = (forms) => {
-  const formSettingsObject = {
-    inputSelector: '.popup__text',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__text_type_error',
-    errorClass: 'popup__text-error_visible'
-  };
-
-  forms.forEach((el) => {
-    const form = new FormValidator(formSettingsObject, el);
-    form.enableValidation();
-    return form;
-  })
-};
-
-validateForms(forms);
