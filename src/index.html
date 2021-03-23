@@ -14,13 +14,18 @@
 
     <main class="content">
       <section class="profile">
-        <img src="<%=require('./images/kusto.jpg')%>" alt="Фотография профиля" class="profile__photo">
+        <div class="profile__avatar">
+          <img src="#" alt="Фотография профиля" class="profile__photo">
+          <div class="profile__shadow">
+            <img src="<%=require('./images/pen.svg')%>" alt="Перо" class="profile__edit-image">
+          </div>
+        </div>
         <div class="profile__info">
           <div class="profile__edition">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title"></h1>
             <button type="button" name="editButton" class="profile__button profile__button_edit"></button>
           </div>
-          <p class="profile__subtitle">Исследователь океана</p>
+          <p class="profile__subtitle"></p>
         </div>
         <button type="button" name="addButton" class="profile__button profile__button_add"><img src="<%=require('./images/add_button.svg')%>" alt="Кнопка добавления" class="profile__icon"></button>
       </section>
@@ -39,7 +44,10 @@
         <button type="button" name="deleteButton" class="article__delete-button"></button>
         <div class="article__bottom-part">
           <h2 class="article__name"></h2>
-          <button type="button" name="likeButton" class="article__like-button"></button>
+          <div class="article__like-field">
+            <button type="button" name="likeButton" class="article__like-button"></button>
+            <p class="article__like-quantity"></p>
+          </div>         
         </div>
       </div>
     </template>
@@ -52,7 +60,7 @@
         <span class="name-input-error popup__text-error"></span>
         <input id="job-input" required type="text" name="userJob" placeholder="Профессия пользователя" minlength="2" maxlength="200" class="popup__text popup__text_input_job">
         <span class="job-input-error popup__text-error"></span>
-        <button type="submit" name="submitButton" class="popup__button">Сохранить</button>
+        <button type="submit" name="submitButton" class="popup__button popup__button_edition"></button>
       </form>
     </section>
 
@@ -64,7 +72,7 @@
         <span class="place-input-error popup__text-error"></span>
         <input id="link-input" required type="url" name="link" placeholder="Ссылка на изображение" class="popup__text popup__text_disabled popup__text_input_link">
         <span class="link-input-error popup__text-error"></span>
-        <button type="submit" name="submitButton" class="popup__button">Создать</button>
+        <button type="submit" name="submitButton" class="popup__button popup__button_addition">Создать</button>
       </form>
     </section>
 
@@ -74,6 +82,24 @@
         <img src="#" alt="Изображение места" class="popup__image">
         <p class="popup__paragraph"></p>
       </div>
+    </section>
+
+    <section class="popup popup_delition">
+      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_edit"><img src="<%=require('./images/close_icon.svg')%>" alt="Закрывающий крестик" class="popup__close-image"></button>
+      <form name="deletion-form" class="popup__container popup__container_deletion">
+        <h2 class="popup__title popup__title_delition">Вы уверены?</h2>
+        <button type="submit" name="submitButton" class="popup__button">Да</button>
+      </form>
+    </section>
+
+    <section class="popup popup_change-avatar">
+      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_edit"><img src="<%=require('./images/close_icon.svg')%>" alt="Закрывающий крестик" class="popup__close-image"></button>
+      <form novalidate name="avatar-form" class="popup__container popup__container_change-avatar">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <input id="avatar-input" required type="url" name="avatar" placeholder="Ссылка на изображение" class="popup__text popup__text_disabled popup__text_input_avatar-link">
+        <span class="avatar-input-error popup__text-error"></span>
+        <button type="submit" name="submitButton" class="popup__button popup__button_change-avatar">Сохранить</button>
+      </form>
     </section>
 
   </div>
