@@ -1,77 +1,60 @@
 export default class Card {
-  constructor({ name, link, likes, _id, owner }, cardSelector, handleCardClick, handleDeleteCard, api) {
+  constructor({ name, link, likes, _id, owner }, userId, cardSelector, handleCardClick, handleDeleteCard, addLike, removeLike) {
     this._name = name;
     this._link = link;
     this._likes = likes;
     this._likesNumber = likes.length;
     this._id = _id;
     this._ownerId = owner._id;
+    this._userId = userId;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
-    this._api = api;
+    this._addLike = addLike;
+    this._removeLike = removeLike;
     this._template = document.querySelector('template').content;
-    this._handleLikeButton = this._handleLikeButton.bind(this);
+    this._updateLikesQuantity = this._updateLikesQuantity.bind(this);
+    this._activateLikeButton = this._activateLikeButton.bind(this);
+    this._desactivateLikeButton = this._desactivateLikeButton.bind(this);
   }
 
   // Настроить отображение кнопок удаления и лайка, в зависимости от создателя карточки
   // и в зависимости от того, лайкали ли Вы эту карточку ранее
   _setButtons() {
-    this._api.getUserInfo()
-      .then((res) => {
-        if (this._ownerId === res._id) {
-          this._deleteButton.classList.add('article__delete-button_active')
-        } else {
-          this._deleteButton.disabled = true;
-          this._deleteButton.classList.remove('article__delete-button_active');
-        }
+    if (this._ownerId === this._userId) {
+      this._deleteButton.classList.add('article__delete-button_active')
+    } else {
+      this._deleteButton.disabled = true;
+      this._deleteButton.classList.remove('article__delete-button_active');
+    }
 
-        if (this._likes.some(el => el._id === res._id)) {
-          this._likeButton.classList.add('article__like-button_active');
-        } else {
-          this._likeButton.classList.remove('article__like-button_active');
-        }
-      })
-      .catch(err => {
-        console.log('Ошибка при получении id пользователя', err);
-      });  
+    if (this._checkIsLiked()) {
+      this._activateLikeButton();
+    } else {
+      this._desactivateLikeButton();
+    }
+  }
+  
+  // Обновить количество лайков
+  _updateLikesQuantity(data) {
+    this._likes = data.likes;
+    this._cardLikes.textContent = data.likes.length;
   }
 
-   // Обработка нажатия на лайк
-   _handleLikeButton() {
-    // Проверить, присутствуете ли Вы в массиве с лайкнувшими пользователями 
-    // Обновить количество лайков, добавить/убрать себя из массива
-    this._api.getUserInfo()
-      .then((res) => {
-        if (this._likes.some(el => el._id === res._id)) {
-          this._api.removeLikeFromCard(this._id)
-            .then((data) => {
-              this._likes = data.likes;
-              this._cardLikes.textContent = data.likes.length;
-              this._likeButton.classList.remove('article__like-button_active');
-            })
-            .catch(err => {
-              console.log('Ошибка при попытке убрать лайк', err);
-            });
-        }
+  _activateLikeButton() {
+    this._likeButton.classList.add('article__like-button_active');
+  }
 
-        this._api.putLikeOnCard(this._id)
-          .then((data) => {
-            this._likes = data.likes;
-            this._cardLikes.textContent = data.likes.length;
-            this._likeButton.classList.add('article__like-button_active');
-          })
-          .catch(err => {
-            console.log('Ошибка при попытке поставить лайк', err);
-          });
-      })
-      .catch(err => {
-        console.log('Ошибка при обновлении информации о кол-ве лайков', err);
-      });
+  _desactivateLikeButton() {
+    this._likeButton.classList.remove('article__like-button_active');
+  }
+
+  _checkIsLiked() {
+    return this._likes.some(el => el._id === this._userId);
   }
 
    // Получить темплейт карточки
-   _getTemplate() {
+  _getTemplate() {
     const cardElement = this._template.cloneNode(true);
     return cardElement;
   }
@@ -102,7 +85,13 @@ export default class Card {
       this._handleDeleteCard(evt.target.closest(this._cardSelector), this._id);
     });
 
-    this._likeButton.addEventListener('click', this._handleLikeButton);
+    this._likeButton.addEventListener('click', () => {
+      if (this._checkIsLiked()) {
+        this._removeLike(this._id, this._desactivateLikeButton, this._updateLikesQuantity);
+      } else {
+        this._addLike(this._id, this._activateLikeButton, this._updateLikesQuantity);
+      }
+    });
 
     this._cardImage.addEventListener('click', this._handleCardClick);
   }

@@ -26,6 +26,8 @@
 //   }
 // ];
 
+export const keyValueEscape = 'Escape';
+
 // Настройки для класса валидации
 export const formSettingsObject = {
   inputSelector: '.popup__text',

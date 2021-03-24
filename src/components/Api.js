@@ -16,8 +16,7 @@ export default class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-    .then(res => this._handlePromise(res))
-    .catch(err => Promise.reject(err));
+    .then(res => this._handlePromise(res));
   }
 
   editUserInfo(data) {
@@ -29,8 +28,7 @@ export default class Api {
         about: data.userJob
       })
     })
-    .then(res => this._handlePromise(res))
-    .catch(err => Promise.reject(err));
+    .then(res => this._handlePromise(res));
   }
 
   changeUserAvatar(data) {
@@ -41,16 +39,14 @@ export default class Api {
         avatar: data.avatar
       })
     })
-    .then(res => this._handlePromise(res))
-    .catch(err => Promise.reject(err));
+    .then(res => this._handlePromise(res));
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-      .then(res => this._handlePromise(res))
-      .catch(err => Promise.reject(err));    
+    .then(res => this._handlePromise(res));   
   }
 
   addNewCard(data) {
@@ -62,8 +58,7 @@ export default class Api {
         link: data.link
       })
     })
-    .then(res => this._handlePromise(res))
-    .catch(err => Promise.reject(err));
+    .then(res => this._handlePromise(res));
   } 
 
   deleteCard(id) {
@@ -71,8 +66,7 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => this._handlePromise(res))
-    .catch(err => Promise.reject(err));
+    .then(res => this._handlePromise(res));
   }
 
   putLikeOnCard(id) {
@@ -81,7 +75,6 @@ export default class Api {
       headers: this._headers
     })
     .then(res => this._handlePromise(res))
-    .catch(err => Promise.reject(err));
   }
 
   removeLikeFromCard(id) {
@@ -90,6 +83,5 @@ export default class Api {
       headers: this._headers
     })
     .then(res => this._handlePromise(res))
-    .catch(err => Promise.reject(err));
   }
 }

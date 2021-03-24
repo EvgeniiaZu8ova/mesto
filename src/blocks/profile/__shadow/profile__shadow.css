@@ -12,4 +12,5 @@
 
 .profile__shadow:hover {
   opacity: 1;
+  cursor: pointer;
 }
