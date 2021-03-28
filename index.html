@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+<body class="page">
+  <div class="page__container">
+
+    <header class="header">
+      <img src="bbe2a6eafac19c3d031c.svg" alt="Логотип" class="logo">
+    </header>
+
+    <main class="content">
+      <section class="profile">
+        <div class="profile__avatar">
+          <img src="#" alt="Фотография профиля" class="profile__photo">
+          <div class="profile__shadow">
+            <img src="a086f758840ae814ecde.svg" alt="Перо" class="profile__edit-image">
+          </div>
+        </div>
+        <div class="profile__info">
+          <div class="profile__edition">
+            <h1 class="profile__title"></h1>
+            <button type="button" name="editButton" class="profile__button profile__button_edit"></button>
+          </div>
+          <p class="profile__subtitle"></p>
+        </div>
+        <button type="button" name="addButton" class="profile__button profile__button_add"><img src="d5d6f8af0577b9c95ee4.svg" alt="Кнопка добавления" class="profile__icon"></button>
+      </section>
+
+      <section class="elements">
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <template id="userCard">
+      <div class="article">
+        <img src="#" alt="#" class="article__image">
+        <button type="button" name="deleteButton" class="article__delete-button"></button>
+        <div class="article__bottom-part">
+          <h2 class="article__name"></h2>
+          <div class="article__like-field">
+            <button type="button" name="likeButton" class="article__like-button"></button>
+            <p class="article__like-quantity"></p>
+          </div>         
+        </div>
+      </div>
+    </template>
+
+    <section class="popup popup_edition">
+      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_edit"><img src="44bb1e48112a8752b62d.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
+      <form novalidate name="edition-form" class="popup__container popup__container_edition">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input id="name-input" required type="text" name="userName" placeholder="Имя пользователя" minlength="2" maxlength="40" class="popup__text popup__text_input_name">
+        <span class="name-input-error popup__text-error"></span>
+        <input id="job-input" required type="text" name="userJob" placeholder="Профессия пользователя" minlength="2" maxlength="200" class="popup__text popup__text_input_job">
+        <span class="job-input-error popup__text-error"></span>
+        <button type="submit" name="submitButton" class="popup__button popup__button_edition"></button>
+      </form>
+    </section>
+
+    <section class="popup popup_addition">
+      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_add"><img src="44bb1e48112a8752b62d.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
+      <form novalidate name="addition-form" class="popup__container popup__container_addition">
+        <h2 class="popup__title">Новое место</h2>
+        <input id="place-input" required type="text" name="name" placeholder="Название места" minlength="2" maxlength="30" class="popup__text popup__text_disabled popup__text_input_place">
+        <span class="place-input-error popup__text-error"></span>
+        <input id="link-input" required type="url" name="link" placeholder="Ссылка на изображение" class="popup__text popup__text_disabled popup__text_input_link">
+        <span class="link-input-error popup__text-error"></span>
+        <button type="submit" name="submitButton" class="popup__button popup__button_addition"></button>
+      </form>
+    </section>
+
+    <section class="popup popup_picture">
+      <div class="popup__card-container">
+        <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_pic"><img src="44bb1e48112a8752b62d.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
+        <img src="#" alt="Изображение места" class="popup__image">
+        <p class="popup__paragraph"></p>
+      </div>
+    </section>
+
+    <section class="popup popup_delition">
+      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_edit"><img src="44bb1e48112a8752b62d.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
+      <form name="deletion-form" class="popup__container popup__container_deletion">
+        <h2 class="popup__title popup__title_delition">Вы уверены?</h2>
+        <button type="submit" name="submitButton" class="popup__button">Да</button>
+      </form>
+    </section>
+
+    <section class="popup popup_change-avatar">
+      <button type="button" name="closeButton" class="popup__close-icon popup__close-icon_edit"><img src="44bb1e48112a8752b62d.svg" alt="Закрывающий крестик" class="popup__close-image"></button>
+      <form novalidate name="avatar-form" class="popup__container popup__container_change-avatar">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <input id="avatar-input" required type="url" name="avatar" placeholder="Ссылка на изображение" class="popup__text popup__text_disabled popup__text_input_avatar-link">
+        <span class="avatar-input-error popup__text-error"></span>
+        <button type="submit" name="submitButton" class="popup__button popup__button_change-avatar">Сохранить</button>
+      </form>
+    </section>
+
+  </div>
+</body>
+</html>
