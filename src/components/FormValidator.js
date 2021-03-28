@@ -37,7 +37,7 @@ export default class FormValidator {
   }
 
   // Функция изменения настроек отображения полей формы при вводе валидных данных
-  _hideInputError() {
+  hideInputError() {
     this._inputList.forEach((el) => {
       const formError = this._formElement.querySelector(`.${el.id}-error`);
       el.classList.remove(this._inputErrorClass);
@@ -51,7 +51,7 @@ export default class FormValidator {
     if (this._hasInvalidInput()) {
       this._showInputError();
     } else {
-      this._hideInputError();
+      this.hideInputError();
     }
   }
 

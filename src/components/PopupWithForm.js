@@ -5,6 +5,7 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popup.querySelector('.popup__container');
+    this._submitButton = this._popup.querySelector('.popup__button');
   }
 
   _getInputValues() {
@@ -22,6 +23,7 @@ export default class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
+      this._submitButton.disabled = true;
     })
   }
 

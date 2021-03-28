@@ -212,11 +212,13 @@ changeAvatarValidator.enableValidation();
 // Добавление обработчиков кнопкам открытия модальных окон
 openButtonAdd.addEventListener('click', () => {
   addCardValidator.toggleButtonState();
-  cardSubmitButton.textContent = 'Сохранить';
+  addCardValidator.hideInputError();
+  cardSubmitButton.textContent = 'Создать';
   popupWithAdd.open();
 });
 
 openButtonEdit.addEventListener('click', () => {
+  editInfoValidator.hideInputError();
   profileSubmitButton.textContent = 'Сохранить';
   popupWithEdit.open();
   nameInput.value = userInfo.getUserInfo().userName;
@@ -225,6 +227,7 @@ openButtonEdit.addEventListener('click', () => {
 
 editAvatarButton.addEventListener('click', () => {
   changeAvatarValidator.toggleButtonState();
+  changeAvatarValidator.hideInputError();
   avatarSubmitButton.textContent = 'Сохранить';
   popupForUserAvatar.open();
 })
